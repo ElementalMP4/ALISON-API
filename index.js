@@ -59,14 +59,14 @@ async function createQuoteImage(req, res) {
     let offset = 0;
     lines.forEach(line => {
         ctx.fillText(line, 400, 585 + offset, 740);
-        offset += 40;
+        offset += 45;
     });
 
     setTextSize(ctx, username, 300);
     ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
-    ctx.fillText(username, 400, 705);
+    ctx.fillText(username, 400, 710);
 
     res.send(canvas.toDataURL('image/png', 1));
     console.log("Made quote image");
