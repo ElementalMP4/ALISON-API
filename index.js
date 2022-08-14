@@ -48,7 +48,7 @@ async function createQuoteImage(req, res) {
 
     ctx.globalAlpha = 0.75;
     ctx.fillStyle = "#000000"
-    ctx.fillRect(20, 565, 760, 200);
+    ctx.fillRect(20, 565, 760, 210);
     ctx.globalAlpha = 1;
 
     ctx.font = `40px Whitney Bold`;
@@ -58,7 +58,7 @@ async function createQuoteImage(req, res) {
     ctx.textBaseline = "top";
     let offset = 0;
     lines.forEach(line => {
-        ctx.fillText(line, 400, 590 + offset, 740);
+        ctx.fillText(line, 400, 585 + offset, 740);
         offset += 40;
     });
 
@@ -66,7 +66,7 @@ async function createQuoteImage(req, res) {
     ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
-    ctx.fillText(username, 400, 700);
+    ctx.fillText(username, 400, 705);
 
     res.send(canvas.toDataURL('image/png', 1));
     console.log("Made quote image");
