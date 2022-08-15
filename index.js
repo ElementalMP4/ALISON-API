@@ -34,7 +34,7 @@ function getLines(ctx, text, maxWidth) {
 }
 
 async function createQuoteImage(req, res) {
-    console.log("Making member card");
+    console.log("Making quote image");
 
     const avatarURL = req.query.avatar_url;
     const username = "-" + req.query.username;
