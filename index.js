@@ -1,3 +1,6 @@
+const { NlpManager } = require('node-nlp');
+const manager = new NlpManager({ languages: ['en'], forceNER: true, nlu: { useNoneFeature: true } });
+
 const { createCanvas, loadImage } = require('canvas');
 const express = require("express");
 const config = require("./config.json");
@@ -72,6 +75,15 @@ async function createQuoteImage(req, res) {
     console.log("Made quote image");
 }
 
+function judgeMessage(req, res) {
+    manager.process('en', req.query.message.toLowerCase()).then(result => {
+        res.set('Content-Type', 'text/plain');
+        res.send(result.intent);
+    });
+}
+
+app.get('/api/intent', (req, res) => judgeMessage(req, res));
 app.get('/api/quote', (req, res) => createQuoteImage(req, res));
 app.listen(config.port);
+manager.load();
 console.log("Listening on port " + config.port);
